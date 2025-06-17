@@ -6,7 +6,7 @@ from clients.api_client import APIClient
 
 class CreateRequestDict(TypedDict):
     """
-    Описание запроса на регистрацию нового юзера
+    Описание структуры запроса на регистрацию нового юзера
     """
     email: str
     password: str
