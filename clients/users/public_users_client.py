@@ -1,5 +1,4 @@
-import httpx
-
+from httpx import Response
 from typing import TypedDict
 
 from clients.api_client import APIClient
@@ -16,18 +15,13 @@ class CreateRequestDict(TypedDict):
     middleName: str
 
 
-# Базовый URL для всех ендпоинтов
-# В APIClient не нашел где у нас записан BaseURL, поэтому передал сюда
-baseurl = 'http://localhost:8000'
-
-
 class PublicUsersClient(APIClient):
     """
     Клиент для работы с ендпоинтом /api/v1/users (метод POST)
     """
-    def create_user_api(self, request: CreateRequestDict) -> httpx.Response:
+    def create_user_api(self, request: CreateRequestDict) -> Response:
         """
         :param request: Словарь с полями email, password, lastName, firstName, middleName
         :return: Ответ от сервера в виде httpx.Response
         """
-        return self.post(f"{baseurl}/api/v1/users", json=request)
+        return self.post("/api/v1/users", json=request)
